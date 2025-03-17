@@ -2,6 +2,9 @@ const ROCK = 'rock'
 const PAPER = 'paper'
 const SCISSORS = 'scissors'
 
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
     let choice;
    let result = Math.floor(Math.random() * 3);
