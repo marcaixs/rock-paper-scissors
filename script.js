@@ -18,3 +18,20 @@ function getComputerChoice(){
    }
    return choice;
 }
+
+function getHumanChoice(){
+    let humanChoice = prompt('Enter your move: rock, paper or scissors');
+    let choice;
+    switch(humanChoice){
+     case rock:
+         choice = ROCK;
+         break;
+     case paper:
+         choice = PAPER;
+         break;
+     case scissors:
+         choice = SCISSORS;
+         break;       
+    }
+    return choice;
+}
