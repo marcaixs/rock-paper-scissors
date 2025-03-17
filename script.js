@@ -1,6 +1,9 @@
 const ROCK = 'rock'
 const PAPER = 'paper'
 const SCISSORS = 'scissors'
+const DRAW = 'Draw! try again!'
+const WIN = 'You win! congratulations!'
+const LOSE = 'You lose! try again!'
 
 let humanScore = 0;
 let computerScore = 0;
@@ -23,7 +26,7 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let humanChoice = prompt('Enter your move: rock, paper or scissors');
+    let humanChoice = (prompt('Enter your move: rock, paper or scissors')).toLowerCase();
     let choice;
     switch(humanChoice){
      case rock:
@@ -37,4 +40,35 @@ function getHumanChoice(){
          break;       
     }
     return choice;
+}
+
+function playground(humanChoice, computerChoice){
+    if(humanChoice == computerChoice){
+        console.log(DRAW)
+    } else if 
+    (humanChoice == ROCK && computerChoice == PAPER){
+        console.log(LOSE)
+        computerScore ++;
+    }else if 
+    (humanChoice == ROCK && computerChoice == SCISSORS){
+        console.log(WIN)
+        humanScore ++;
+    }else if 
+    (humanChoice == PAPER && computerChoice == ROCK){
+        console.log(WIN)
+        humanScore ++;
+    }else if 
+    (humanChoice == PAPER && computerChoice == SCISSORS){
+        console.log(LOSE)
+        computerScore ++;
+    }else if 
+    (humanChoice == SCISSORS && computerChoice == ROCK){
+        console.log(LOSE)
+        computerScore ++;
+    }else if 
+    (humanChoice == SCISSORS && computerChoice == PAPER){
+        console.log(WIN)
+        humanScore ++;
+    }
+
 }
