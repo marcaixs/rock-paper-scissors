@@ -5,8 +5,7 @@ const DRAW = 'Draw! try again!'
 const WIN = 'You win! congratulations!'
 const LOSE = 'You lose! try again!'
 
-let humanScore = 0;
-let computerScore = 0;
+playGame();
 
 function getComputerChoice(){
     let choice;
@@ -29,46 +28,65 @@ function getHumanChoice(){
     let humanChoice = (prompt('Enter your move: rock, paper or scissors')).toLowerCase();
     let choice;
     switch(humanChoice){
-     case rock:
+     case 'rock':
          choice = ROCK;
          break;
-     case paper:
+     case 'paper':
          choice = PAPER;
          break;
-     case scissors:
+     case 'scissors':
          choice = SCISSORS;
          break;       
     }
     return choice;
 }
 
-function playground(humanChoice, computerChoice){
-    if(humanChoice == computerChoice){
-        console.log(DRAW)
-    } else if 
-    (humanChoice == ROCK && computerChoice == PAPER){
-        console.log(LOSE)
-        computerScore ++;
-    }else if 
-    (humanChoice == ROCK && computerChoice == SCISSORS){
-        console.log(WIN)
-        humanScore ++;
-    }else if 
-    (humanChoice == PAPER && computerChoice == ROCK){
-        console.log(WIN)
-        humanScore ++;
-    }else if 
-    (humanChoice == PAPER && computerChoice == SCISSORS){
-        console.log(LOSE)
-        computerScore ++;
-    }else if 
-    (humanChoice == SCISSORS && computerChoice == ROCK){
-        console.log(LOSE)
-        computerScore ++;
-    }else if 
-    (humanChoice == SCISSORS && computerChoice == PAPER){
-        console.log(WIN)
-        humanScore ++;
+
+
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (let i =0; i<5; i++){
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        playground(humanChoice, computerChoice)
+        console.log('Human: '+humanScore+' || Computer: '+computerScore)
+    }
+
+    console.log('Final score: Human: '+humanScore+' || Computer: '+computerScore)
+
+
+    function playground(humanChoice, computerChoice){
+        
+        if(humanChoice == computerChoice){
+            console.log(DRAW)
+        } else if 
+        (humanChoice == ROCK && computerChoice == PAPER){
+            console.log(LOSE)
+            computerScore ++;
+        }else if 
+        (humanChoice == ROCK && computerChoice == SCISSORS){
+            console.log(WIN)
+            humanScore ++;
+        }else if 
+        (humanChoice == PAPER && computerChoice == ROCK){
+            console.log(WIN)
+            humanScore ++;
+        }else if 
+        (humanChoice == PAPER && computerChoice == SCISSORS){
+            console.log(LOSE)
+            computerScore ++;
+        }else if 
+        (humanChoice == SCISSORS && computerChoice == ROCK){
+            console.log(LOSE)
+            computerScore ++;
+        }else if 
+        (humanChoice == SCISSORS && computerChoice == PAPER){
+            console.log(WIN)
+            humanScore ++;
+        }
+    
     }
 
 }
