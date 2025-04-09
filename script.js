@@ -5,7 +5,31 @@ const DRAW = 'Draw! try again!'
 const WIN = 'You win! congratulations!'
 const LOSE = 'You lose! try again!'
 
-playGame();
+let computerScore = 0;
+let humanScore = 0;
+
+let humanChoice = ''
+
+const score = document.querySelector('.score');
+const buttonRock = document.querySelector('.rock');
+const buttonPaper = document.querySelector('.paper');
+const buttonScissors = document.querySelector('.scissors');
+const result = document.querySelector('.result');
+
+score.textContent = `Human: ${humanScore} - Computer: ${computerScore}`
+
+buttonRock.addEventListener('click', ()=> {
+    humanChoice = ROCK;
+    playGame();
+});
+buttonPaper.addEventListener('click', ()=> {
+    humanChoice = PAPER;
+    playGame();
+});
+buttonScissors.addEventListener('click', ()=> {
+    humanChoice = SCISSORS;
+    playGame();
+});
 
 function getComputerChoice(){
     let choice;
@@ -24,67 +48,52 @@ function getComputerChoice(){
    return choice;
 }
 
-function getHumanChoice(){
-    let humanChoice = (prompt('Enter your move: rock, paper or scissors')).toLowerCase();
-    let choice;
-    switch(humanChoice){
-     case 'rock':
-         choice = ROCK;
-         break;
-     case 'paper':
-         choice = PAPER;
-         break;
-     case 'scissors':
-         choice = SCISSORS;
-         break;       
-    }
-    return choice;
-}
 
+ function playground(humanChoice, computerChoice){   
 
-
-function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    playground(humanChoice, computerChoice)
-    console.log('Human: '+humanScore+' || Computer: '+computerScore)
-
-    console.log('Final score: Human: '+humanScore+' || Computer: '+computerScore)
-
-
-    function playground(humanChoice, computerChoice){
-        
-        if(humanChoice == computerChoice){
-            console.log(DRAW)
-        } else if 
-        (humanChoice == ROCK && computerChoice == PAPER){
-            console.log(LOSE)
+    if(humanChoice == computerChoice){
+            result.innerHTML=DRAW;
+    } else if 
+    (humanChoice == ROCK && computerChoice == PAPER){
+        result.innerHTML=LOSE
             computerScore ++;
         }else if 
         (humanChoice == ROCK && computerChoice == SCISSORS){
-            console.log(WIN)
+            result.innerHTML=WIN
             humanScore ++;
         }else if 
         (humanChoice == PAPER && computerChoice == ROCK){
-            console.log(WIN)
+            result.innerHTML=WIN
             humanScore ++;
         }else if 
         (humanChoice == PAPER && computerChoice == SCISSORS){
-            console.log(LOSE)
+            result.innerHTML=LOSE
             computerScore ++;
         }else if 
         (humanChoice == SCISSORS && computerChoice == ROCK){
-            console.log(LOSE)
+            result.innerHTML=LOSE
             computerScore ++;
         }else if 
         (humanChoice == SCISSORS && computerChoice == PAPER){
-            console.log(WIN)
+            result.innerHTML=WIN
             humanScore ++;
         }
     
     }
 
+function playGame(){
+    let computerChoice = getComputerChoice();
+
+    playground(humanChoice, computerChoice);
+    score.textContent = `Human: ${humanScore} - Computer: ${computerScore}`
+
+    if(humanScore == 5 || computerScore == 5 ){
+        
+        if(humanScore > computerScore){
+            result.textContent = 'Game Over! Player wins!'
+        } else if(humanScore < computerScore){
+            result.textContent = 'Game Over! Computer wins!'
+        }
+    }
 }
+
