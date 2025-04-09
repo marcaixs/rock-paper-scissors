@@ -47,12 +47,10 @@ function playGame(){
     let humanScore = 0;
     let computerScore = 0;
 
-    for (let i =0; i<5; i++){
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        playground(humanChoice, computerChoice)
-        console.log('Human: '+humanScore+' || Computer: '+computerScore)
-    }
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    playground(humanChoice, computerChoice)
+    console.log('Human: '+humanScore+' || Computer: '+computerScore)
 
     console.log('Final score: Human: '+humanScore+' || Computer: '+computerScore)
 
